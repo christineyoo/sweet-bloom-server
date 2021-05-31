@@ -1,0 +1,2 @@
+insert into items (item_name, item_price, item_description, item_url, group_id)
+values ('Roses are Red', 40, 'What better way to wow that special person with a timeless gift of red roses? Express how much that person means to you by gifting a dozen red roses.', 'https://imgur.com/THhJyTk', 1);
