@@ -1,2 +1,2 @@
-insert into items (item_name, item_price, item_description, item_url, group_id)
-values ('Roses are Red', 40, 'What better way to wow that special person with a timeless gift of red roses? Express how much that person means to you by gifting a dozen red roses.', 'https://imgur.com/THhJyTk', 1);
+insert into items (item_name, item_price, item_url, item_description, group_id)
+values ('Almond Fruit Roll Cake', 20, 'https://images.pexels.com/photos/7474243/pexels-photo-7474243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'This decadent roll cake is the perfect dessert to complement a beautiful bouquet of flowers (or to be enjoyed on its own). The fruits include blueberries, strawberries, raspberries, and slices of lemon for a bright lift. Then it is topped with our freshly made whipped cream and slivers of almonds. A true delight!', 2);
