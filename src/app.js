@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config');
 const groupsRouter = require('./groups/groups-router');
 const itemsRouter = require('./items/items-router');
+const reviewsRouter = require('./reviews/reviews-router');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors({ origin: CLIENT_ORIGIN }));
 
 app.use('/api/groups', groupsRouter);
 app.use('/api/items', itemsRouter);
+app.use('/api/reviews', reviewsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
