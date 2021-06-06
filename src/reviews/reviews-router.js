@@ -11,7 +11,7 @@ const serializeReview = (review) => ({
   review_name: xss(review.review_name),
   item_id: review.item_id,
   review_title: xss(review.review_title),
-  review_content: xss(review.content),
+  review_content: xss(review.review_content),
   review_rating: review.review_rating,
   review_date: review.review_date
 });
