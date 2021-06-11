@@ -24,4 +24,27 @@ itemsRouter.route('/').get((req, res, next) => {
     });
 });
 
+itemsRouter
+  .route('/:item_id')
+  .all((req, res, next) => {
+    const knexInstance = req.app.get('db');
+    ItemsService.getById(knexInstance, req.params.item_id)
+      .then((item) => {
+        if (!item) {
+          return res
+            .status(404)
+            .json({ error: { message: `Item doesn't exist` } });
+        }
+        res.item = item;
+        next();
+      })
+      .catch((err) => {
+        console.log({ err });
+        next();
+      });
+  })
+  .get((req, res, next) => {
+    res.json(serializeItem(res.item));
+  })
+
 module.exports = itemsRouter;
