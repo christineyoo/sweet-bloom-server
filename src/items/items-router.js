@@ -6,7 +6,7 @@ const itemsRouter = express.Router();
 const serializeItem = (item) => ({
   id: item.id,
   item_name: xss(item.item_name),
-  item_price: xss(item.item_price),
+  item_price: item.item_price,
   item_description: xss(item.item_description),
   item_url: xss(item.item_url),
   group_id: item.group_id
@@ -45,6 +45,6 @@ itemsRouter
   })
   .get((req, res, next) => {
     res.json(serializeItem(res.item));
-  })
+  });
 
 module.exports = itemsRouter;
