@@ -40,7 +40,40 @@ function makeItemsArray() {
   ];
 }
 
+function makeReviewsArray() {
+  return [
+    {
+      id: 1,
+      review_name: 'Name one',
+      review_title: 'Title one',
+      review_content: 'Content one',
+      review_rating: 1,
+      review_date: '2021-05-20T00:00:00.000Z',
+      item_id: 1
+    },
+    {
+      id: 2,
+      review_name: 'Name two',
+      review_title: 'Title two',
+      review_content: 'Content two',
+      review_rating: 2,
+      review_date: '2021-05-20T00:00:00.000Z',
+      item_id: 2
+    },
+    {
+      id: 3,
+      review_name: 'Name three',
+      review_title: 'Title three',
+      review_content: 'Content three',
+      review_rating: 3,
+      review_date: '2021-05-20T00:00:00.000Z',
+      item_id: 3
+    }
+  ];
+}
+
 module.exports = {
   makeGroupsArray,
-  makeItemsArray
+  makeItemsArray,
+  makeReviewsArray
 };
