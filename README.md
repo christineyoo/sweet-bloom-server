@@ -1,34 +1,108 @@
-# express-boilerplate
+# Sweet-Bloom-Server
+## Description
+This is the server-side code for the groups, items, and reviews of the [client-side Sweet Bloom app](https://sweet-bloom.vercel.app/)
+- [GitHub Repo for Sweet Bloom (client-side)](https://github.com/christineyoo/sweet-bloom)
 
-This is boilerplate code for creating an Express application
+## Features
+### Groups table
+- The `groups` table stores the data about the "Flowers" and "Desserts" groups
+- [Click here see the 'groups' data](https://christine-sweetbloom.herokuapp.com/api/groups)
 
-This is a boilerplate project that
-- installs dependencies
-- installs middleware appropriate for any API project
-- adds basic configuration management
-- configures testing libraries
-- creates NPM scripts for running, developing, testing, and deploying
-- creates a "Hello, world!" endpoint so we can verify that the boilerplate setup worked.
+### Items table
+- The `items` table stores the data about each item. Each item has an id, name, price, description, image url, and group id. Each item references a group.
+- [Click here see the 'items' data](https://christine-sweetbloom.herokuapp.com/api/items)
 
-## Set up
+### Reviews table
+- The `reviews` table stores the data about each review. Each review has an id, name, title, content, rating, date, and item id. Each review references an item.
+- [Click here see the 'reviews' data](https://christine-sweetbloom.herokuapp.com/api/reviews)
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+#### ER Diagram
+![image](https://user-images.githubusercontent.com/76637034/122489235-06bb9c00-cf94-11eb-876c-f7ea503b407e.png)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+## API Documentation
+``` 
+/api
+.
+|---/groups
+|     |-- GET
+|---/items
+|     |-- GET
+|     |-- GET /:item_id
+|---/reviews
+|     |-- GET
+|     |-- GET /:review_id
+|     |-- POST
+|     |-- PATCH /:review_id
+|     |-- DELETE /:review_id
+```
 
-## Scripts
+### GET `/api/groups`
+```
+// res.body
+{
+  id: integer,
+  group_name: text
+}
+```
 
-Start the application `npm start`
+### GET `/api/items` and GET `/api/items/:item_id`
+```
+// res.body
+{
+  id: integer,
+  item_name: text,
+  item_price: integer,
+  item_url: text,
+  item_description: text,
+  group_id: integer
+}
+```
 
-Start nodemon for the application `npm run dev`
+### GET `/api/reviews` and GET `/api/reviews/:review_id`
+```
+// res.body
+{
+  id: integer,
+  review_name: text,
+  item_id: integer,
+  review_title: text,
+  review_content: text,
+  review_rating: integer,
+  review_date: timestamptz
+}
+```
 
-Run the tests `npm test`
+### POST `/api/reviews`
+```
+// req.body
+{
+  review_name: text,
+  item_id: integer,
+  review_title: text,
+  review_content: text,
+  review_rating: integer,
+  review_date: timestamptz
+}
+```
 
-## Deploying
+### PATCH `/api/reviews/:review_id`
+```
+// req.body
+{
+  review_name: text,
+  item_id: integer,
+  review_title: text,
+  review_content: text,
+  review_rating: integer,
+  review_date: timestamptz
+}
+```
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's main branch.
+## Technologies used
+- Node.js
+- Express, Express Router
+- Knex
+- SQL
+- PostgreSQL
+- Testing with Mocha, Chai, and Supertest
+- Heroku
